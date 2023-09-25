@@ -64,24 +64,24 @@ CDropDownMenu.cpp
 CSettingsForm.cpp)
 target_link_libraries(bmos ${SDL2_LIBRARIES} Boost::filesystem Boost::regex)
 
-install(TARGETS bmos DESTINATION /home/pi/bmos)
-install(DIRECTORY fonts DESTINATION /home/pi/bmos)
-install(DIRECTORY faces DESTINATION /home/pi/bmos)
-install(DIRECTORY images DESTINATION /home/pi/bmos)
-install(DIRECTORY faq DESTINATION /home/pi/bmos)
-install(DIRECTORY pictures DESTINATION /home/pi/bmos)
-install(DIRECTORY scores DESTINATION /home/pi/bmos)
-install(DIRECTORY scripts DESTINATION /home/pi/bmos
+install(TARGETS bmos DESTINATION /home/bmo/bmos)
+install(DIRECTORY fonts DESTINATION /home/bmo/bmos)
+install(DIRECTORY faces DESTINATION /home/bmo/bmos)
+install(DIRECTORY images DESTINATION /home/bmo/bmos)
+install(DIRECTORY faq DESTINATION /home/bmo/bmos)
+install(DIRECTORY pictures DESTINATION /home/bmo/bmos)
+install(DIRECTORY scores DESTINATION /home/bmo/bmos)
+install(DIRECTORY scripts DESTINATION /home/bmo/bmos
         PATTERN "scripts/*"
         PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                     GROUP_EXECUTE GROUP_READ)
-install(DIRECTORY servos DESTINATION /home/pi/bmos
+install(DIRECTORY servos DESTINATION /home/bmo/bmos
         PATTERN "servos/*"
         PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                     GROUP_EXECUTE GROUP_READ)
-install(DIRECTORY videos DESTINATION /home/pi/bmos)
+install(DIRECTORY videos DESTINATION /home/bmo/bmos)
 
-install(FILES bmo.txt commands.conf DESTINATION /home/pi/bmos
+install(FILES bmo.txt commands.conf DESTINATION /home/bmo/bmos
 PERMISSIONS  WORLD_WRITE GROUP_WRITE OWNER_WRITE
 	WORLD_READ GROUP_READ OWNER_READ)
 

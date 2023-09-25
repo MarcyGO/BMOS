@@ -1,5 +1,5 @@
 clear
-cd /home/pi/bmos/parade
+cd /home/bmo/bmos/parade
 clear
-/home/pi/bmos/parade/parade >/dev/null 2>/dev/null
+/home/bmo/bmos/parade/parade >/dev/null 2>/dev/null
 clear

@@ -71,7 +71,7 @@ string CWiFi::GetIPAddress()
     FILE* cmd = NULL;
     string ipAddress = "";
 
-    sprintf(ipCmd, "/home/pi/bmos/scripts/getip.sh");
+    sprintf(ipCmd, "/home/bmo/bmos/scripts/getip.sh");
     sprintf(message, "Not Found");
     ipAddress = message;
 
@@ -171,9 +171,9 @@ bool CWiFi::UpdateWiFi(std::string ssid, std::string psk)
     file.close();
 
 #ifdef WINDOWS
-    config_file = "c:/home/pi/bmos/wpa_supplicant.conf";
+    config_file = "c:/home/bmo/bmos/wpa_supplicant.conf";
 #else
-    config_file = "/home/pi/bmos/wpa_supplicant.conf";
+    config_file = "/home/bmo/bmos/wpa_supplicant.conf";
 #endif
 
     ofstream ofile(config_file.c_str(), ios::out);
@@ -191,8 +191,8 @@ bool CWiFi::UpdateWiFi(std::string ssid, std::string psk)
     ofile.close();
 
 #ifndef WINDOWS
-    system("sudo cp /home/pi/bmos/wpa_supplicant.conf /etc/wpa_supplicant");
-    system("sudo /home/pi/bmos/scripts/restartwifi.sh");
+    system("sudo cp /home/bmo/bmos/wpa_supplicant.conf /etc/wpa_supplicant");
+    system("sudo /home/bmo/bmos/scripts/restartwifi.sh");
 #endif
 
     return(true);

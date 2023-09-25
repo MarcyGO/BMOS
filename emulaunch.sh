@@ -1,3 +1,3 @@
-/home/pi/bmos/servos/armsup
+/home/bmo/bmos/servos/armsup
 /usr/bin/emulationstation
-/home/pi/bmos/BMOSProj/build/bmos &
+/home/bmo/bmos/BMOSProj/build/bmos &

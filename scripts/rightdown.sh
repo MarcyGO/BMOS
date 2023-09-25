@@ -1,1 +1,1 @@
-/home/pi/bmos/servos/arms r d 10
+/home/bmo/bmos/servos/arms r d 10

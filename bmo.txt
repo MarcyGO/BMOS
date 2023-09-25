@@ -31,11 +31,11 @@ l:mp4:cn3.mp4:bmo01.jpg
 ;:vg:videogames.mp4
 
 
-Z:system:/home/pi/bmos/scripts/waveleft.sh
-X:system:/home/pi/bmos/scripts/waveright.sh
-C:system:/home/pi/bmos/scripts/waveboth.sh
-V:system:/home/pi/bmos/scripts/armsdown.sh
-B:system:/home/pi/bmos/scripts/armsup.sh
+Z:system:/home/bmo/bmos/scripts/waveleft.sh
+X:system:/home/bmo/bmos/scripts/waveright.sh
+C:system:/home/bmo/bmos/scripts/waveboth.sh
+V:system:/home/bmo/bmos/scripts/armsdown.sh
+B:system:/home/bmo/bmos/scripts/armsup.sh
 
 random:hello.mp4
 random:homies.mp4

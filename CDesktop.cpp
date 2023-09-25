@@ -206,7 +206,7 @@ CDesktop::CDesktop(int w, int h): CDesktop()
 	mFaces.GetFiles(CApplication::sBMOS_Root + "/faces/", "jpg");
 
 	mCurrentSlide = 0;
-	mPictures.GetFiles(CApplication::sBMOS_Root + "/pictures/", "jpg");
+	mPictures.GetFiles(CApplication::sBMOS_Root + "/bmoctures/", "jpg");
 
 
 	mCursor = new CTexture();
@@ -420,9 +420,9 @@ CDesktop::CDesktop(int w, int h): CDesktop()
 	mPhotos->mVisible = false;
 	mPhotos->mName = "Photos";
 #ifdef WINDOWS
-	mPhotos->mPath = "c:/home/pi/bmos/pictures/";
+	mPhotos->mPath = "c:/home/bmo/bmos/bmoctures/";
 #else
-	mPhotos->mPath = "/home/pi/bmos/pictures/";
+	mPhotos->mPath = "/home/bmo/bmos/bmoctures/";
 #endif // WINDOWS
 
 	mBeemotes = new CFolder();
@@ -430,9 +430,9 @@ CDesktop::CDesktop(int w, int h): CDesktop()
 	mBeemotes->mVisible = false;
 	mBeemotes->mName = "Beemotes";
 #ifdef WINDOWS
-	mBeemotes->mPath = "c:/home/pi/bmos/videos/";
+	mBeemotes->mPath = "c:/home/bmo/bmos/videos/";
 #else
-	mBeemotes->mPath = "/home/pi/bmos/videos/";
+	mBeemotes->mPath = "/home/bmo/bmos/videos/";
 #endif
 
 	AddIcon(mFAQ);
@@ -473,7 +473,7 @@ void CDesktop::LoadSettings()
 		mFaces.GetFiles(CApplication::sBMOS_Root + "/faces/", "jpg");
 
 		mCurrentSlide = 0;
-		mPictures.GetFiles(CApplication::sBMOS_Root + "/pictures/", "jpg");
+		mPictures.GetFiles(CApplication::sBMOS_Root + "/bmoctures/", "jpg");
 	}
 	catch (...)
 	{
@@ -588,7 +588,7 @@ void CDesktop::OnWindowMenu(CMenuBarItem* item)
 			SDL_Quit();
 
 #ifndef WINDOWS
-			system("/home/pi/bmos/scripts/emulaunch.sh -desktop &");
+			system("/home/bmo/bmos/scripts/emulaunch.sh -desktop &");
 #endif
 			SDL_DestroyRenderer(CApplication::sRenderer);
 			SDL_DestroyWindow(CApplication::sWindow);
@@ -764,7 +764,7 @@ void CDesktop::OnMenuVideoGames(CMenuBarItem* item)
 		SDL_Quit();
 
 
-		system("/home/pi/bmos/scripts/emulaunch.sh -desktop &");
+		system("/home/bmo/bmos/scripts/emulaunch.sh -desktop &");
 
 		SDL_DestroyRenderer(CApplication::sRenderer);
 		SDL_DestroyWindow(CApplication::sWindow);
@@ -787,7 +787,7 @@ void CDesktop::OnMenuParade(CMenuBarItem* item)
 	else
 	{
 #ifndef WINDOWS
-		system("/home/pi/bmos/scripts/parade.sh");
+		system("/home/bmo/bmos/scripts/parade.sh");
 #endif
 	}
 }
@@ -826,9 +826,9 @@ void CDesktop::OnMenuVoices(CMenuBarItem* item)
 
 		CFiles files;
 #ifdef WINDOWS
-		path = "C:/home/pi/bmos/videos/";
+		path = "C:/home/bmo/bmos/videos/";
 #else
-		path = "/home/pi/bmos/videos/";
+		path = "/home/bmo/bmos/videos/";
 #endif
 
 		files.GetFiles(path, mBeemotes->mFilter);
@@ -883,9 +883,9 @@ void CDesktop::OnMenuPhotos(CMenuBarItem* item)
 
 		CFiles files;
 #ifdef WINDOWS
-		path = "C:/home/pi/bmos/pictures/";
+		path = "C:/home/bmo/bmos/bmoctures/";
 #else
-		path = "/home/pi/bmos/pictures/";
+		path = "/home/bmo/bmos/bmoctures/";
 #endif
 
 		std::vector<CFile> fileObjects;
@@ -1465,7 +1465,7 @@ void CDesktop::Update()
 			if (mVoiceReboot == false && mVoiceShutdown == false)
 			{
 				std::string path;
-				path = CApplication::sBMOS_Root + "/pictures/";
+				path = CApplication::sBMOS_Root + "/bmoctures/";
 
 				if (mPictures.mFiles.size() == 0)
 				{
@@ -1796,7 +1796,7 @@ void CDesktop::OnTextEvent(SDL_TextInputEvent e)
 		{
 			PlayVideoSync((char*)kc.mArgument1.c_str());
 #ifndef WINDOWS
-			system("/home/pi/bmos/scripts/emulaunch.sh -desktop &");
+			system("/home/bmo/bmos/scripts/emulaunch.sh -desktop &");
 #endif
 			//printf("SDL Quit()\n");
 
@@ -1858,7 +1858,7 @@ CWindow* CDesktop::OnKeyDown(SDL_KeyboardEvent e)
 		{
 #ifndef WINDOWS
 			printf("dbuscontrol.sh stop \n");
-			system("/home/pi/bmos/scripts/dbuscontrol.sh stop");
+			system("/home/bmo/bmos/scripts/dbuscontrol.sh stop");
 
 			//kill(wpid, 9);
 #endif
@@ -1976,7 +1976,7 @@ CWindow* CDesktop::OnKeyDown(SDL_KeyboardEvent e)
 #ifndef WINDOWS
 				//kill(wpid, 9);
 
-				system("/home/pi/bmos/scripts/dbuscontrol.sh stop");
+				system("/home/bmo/bmos/scripts/dbuscontrol.sh stop");
 #endif
 			}
 
@@ -2561,17 +2561,17 @@ void CDesktop::OnConfirmRunScript(CMessageBox* box, CMessageBox::MessageResult r
 {
 	if (result == CMessageBox::MessageResult::OK)
 	{
-		std::string cmd = "sudo cp " + mDiskDrive->mPath + "/" + mMessageBox->mTag + " /home/pi/script.sh";
+		std::string cmd = "sudo cp " + mDiskDrive->mPath + "/" + mMessageBox->mTag + " /home/bmo/script.sh";
 #ifndef WINDOWS
 		system(cmd.c_str());
 #endif
 
-		cmd = "sudo /home/pi/script.sh";
+		cmd = "sudo /home/bmo/script.sh";
 #ifndef WINDOWS
 		system(cmd.c_str());
 #endif
 
-		cmd = "sudo rm /home/pi/script.sh";
+		cmd = "sudo rm /home/bmo/script.sh";
 #ifndef WINDOWS
 		system(cmd.c_str());
 #endif
@@ -2646,7 +2646,7 @@ void CDesktop::OnConfirmInstallMedia(CMessageBox* box, CMessageBox::MessageResul
 			}
 			else
 			{
-				dst = CApplication::sBMOS_Root + "/pictures/" + files->mFiles[i];
+				dst = CApplication::sBMOS_Root + "/bmoctures/" + files->mFiles[i];
 			}
 
 			CFiles::Copy(src, dst);
@@ -2680,7 +2680,7 @@ void CDesktop::PlayVideoSync(char* filename)
 #ifdef WINDOWS
 	//printf("PlayVideo(%s)\n", filename);
 #else
-	sprintf(s, "omxplayer --aspect-mode fill --layer 10010 -o alsa --no-keys --no-osd /home/pi/bmos/videos/%s > /dev/null &", filename);
+	sprintf(s, "omxplayer --aspect-mode fill --layer 10010 -o alsa --no-keys --no-osd /home/bmo/bmos/videos/%s > /dev/null &", filename);
 	system(s);
 #endif
 
@@ -2718,7 +2718,7 @@ void SDL_Refresh()
 void CDesktop::PlayVideo(char* filename, int face)
 {
 	char vide[1024];
-	sprintf(vide, "/home/pi/bmos/videos/%s", filename);
+	sprintf(vide, "/home/bmo/bmos/videos/%s", filename);
 	char c2;
 
 	if (wpid != 0)
@@ -2857,7 +2857,7 @@ void CDesktop::SetPicture(int pic)
 		mFace = new CTexture();
 	}
 
-	sprintf(str, "%s/pictures/%s", CApplication::sBMOS_Root.c_str(), mPictures.mFiles[pic].c_str());
+	sprintf(str, "%s/bmoctures/%s", CApplication::sBMOS_Root.c_str(), mPictures.mFiles[pic].c_str());
 
 	std::string path = str;
 
@@ -3047,7 +3047,7 @@ void CDesktop::ProcessGoogleVoice()
 		return;
 	}
 #ifndef WINDOWS
-	string command = "/home/pi/bmos/scripts/google-voice.sh";
+	string command = "/home/bmo/bmos/scripts/google-voice.sh";
 
 	cmd = popen(command.c_str(), "r");
 	c = fgetc(cmd);
@@ -3163,7 +3163,7 @@ void CDesktop::ProcessGoogleVoice()
 		{
 			PlayVideoSync((char*)"videogames.mp4");
 #ifndef WINDOWS
-			system("/home/pi/bmos/scripts/emulaunch.sh -desktop &");
+			system("/home/bmo/bmos/scripts/emulaunch.sh -desktop &");
 #endif
 			SDL_DestroyRenderer(CApplication::sRenderer);
 			SDL_DestroyWindow(CApplication::sWindow);
